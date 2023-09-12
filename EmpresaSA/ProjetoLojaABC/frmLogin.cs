@@ -27,6 +27,7 @@ namespace ProjetoLojaABC
             frmMenuPrincipal abrir = new frmMenuPrincipal();
             abrir.Show();
             this.Hide();
+
         }
     }
 }
