@@ -24,3 +24,4 @@ C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\E
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\Debug\ProjetoLojaABC.csproj.CoreCompileInputs.cache
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\Debug\ProjetoLojaABC.exe
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\Debug\ProjetoLojaABC.pdb
+C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\Debug\ProjetoLojaABC.frmCalculadora.resources

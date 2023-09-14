@@ -24,10 +24,16 @@ namespace ProjetoLojaABC
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            frmMenuPrincipal abrir = new frmMenuPrincipal();
-            abrir.Show();
-            this.Hide();
+            //frmmenuprincipal abrir = new frmmenuprincipal();
+            //abrir.show();
+            //this.hide();
 
+            // Declaração das Variaveis
+            string usuario, senha;
+
+            // Inicializar as variáveis
+            usuario = txtUsuario.Text;
+            senha = txtSenha.Text;
         }
     }
 }
