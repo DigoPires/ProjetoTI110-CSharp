@@ -50,7 +50,8 @@ namespace ProjetoLojaABC
             // lblNum1
             // 
             this.lblNum1.AutoSize = true;
-            this.lblNum1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblNum1.BackColor = System.Drawing.Color.Transparent;
+            this.lblNum1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblNum1.Location = new System.Drawing.Point(129, 70);
             this.lblNum1.Name = "lblNum1";
             this.lblNum1.Size = new System.Drawing.Size(53, 13);
@@ -60,7 +61,8 @@ namespace ProjetoLojaABC
             // lblNum2
             // 
             this.lblNum2.AutoSize = true;
-            this.lblNum2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblNum2.BackColor = System.Drawing.Color.Transparent;
+            this.lblNum2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblNum2.Location = new System.Drawing.Point(129, 136);
             this.lblNum2.Name = "lblNum2";
             this.lblNum2.Size = new System.Drawing.Size(53, 13);
@@ -70,7 +72,8 @@ namespace ProjetoLojaABC
             // lblResult
             // 
             this.lblResult.AutoSize = true;
-            this.lblResult.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblResult.BackColor = System.Drawing.Color.Transparent;
+            this.lblResult.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lblResult.Location = new System.Drawing.Point(637, 70);
             this.lblResult.Name = "lblResult";
             this.lblResult.Size = new System.Drawing.Size(55, 13);
@@ -79,12 +82,14 @@ namespace ProjetoLojaABC
             // 
             // gpbOperador
             // 
+            this.gpbOperador.BackColor = System.Drawing.Color.Transparent;
             this.gpbOperador.Controls.Add(this.rdbDivi);
             this.gpbOperador.Controls.Add(this.rdbMult);
             this.gpbOperador.Controls.Add(this.rdbSub);
             this.gpbOperador.Controls.Add(this.rdbAdi);
+            this.gpbOperador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gpbOperador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gpbOperador.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.gpbOperador.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.gpbOperador.Location = new System.Drawing.Point(340, 70);
             this.gpbOperador.Name = "gpbOperador";
             this.gpbOperador.Padding = new System.Windows.Forms.Padding(25, 25, 7, 7);
@@ -99,7 +104,7 @@ namespace ProjetoLojaABC
             this.rdbDivi.Location = new System.Drawing.Point(21, 103);
             this.rdbDivi.Name = "rdbDivi";
             this.rdbDivi.Size = new System.Drawing.Size(86, 21);
-            this.rdbDivi.TabIndex = 5;
+            this.rdbDivi.TabIndex = 6;
             this.rdbDivi.TabStop = true;
             this.rdbDivi.Text = "Divisão(:)";
             this.rdbDivi.UseVisualStyleBackColor = true;
@@ -110,7 +115,7 @@ namespace ProjetoLojaABC
             this.rdbMult.Location = new System.Drawing.Point(21, 80);
             this.rdbMult.Name = "rdbMult";
             this.rdbMult.Size = new System.Drawing.Size(123, 21);
-            this.rdbMult.TabIndex = 4;
+            this.rdbMult.TabIndex = 5;
             this.rdbMult.TabStop = true;
             this.rdbMult.Text = "Multiplicação(x)";
             this.rdbMult.UseVisualStyleBackColor = true;
@@ -121,7 +126,7 @@ namespace ProjetoLojaABC
             this.rdbSub.Location = new System.Drawing.Point(21, 57);
             this.rdbSub.Name = "rdbSub";
             this.rdbSub.Size = new System.Drawing.Size(106, 21);
-            this.rdbSub.TabIndex = 3;
+            this.rdbSub.TabIndex = 4;
             this.rdbSub.TabStop = true;
             this.rdbSub.Text = "Subtração(-)";
             this.rdbSub.UseVisualStyleBackColor = true;
@@ -129,49 +134,49 @@ namespace ProjetoLojaABC
             // rdbAdi
             // 
             this.rdbAdi.AutoSize = true;
-            this.rdbAdi.Location = new System.Drawing.Point(21, 34);
+            this.rdbAdi.Location = new System.Drawing.Point(21, 35);
             this.rdbAdi.Name = "rdbAdi";
             this.rdbAdi.Size = new System.Drawing.Size(87, 21);
-            this.rdbAdi.TabIndex = 2;
+            this.rdbAdi.TabIndex = 3;
             this.rdbAdi.TabStop = true;
             this.rdbAdi.Text = "Adição(+)";
             this.rdbAdi.UseVisualStyleBackColor = true;
             // 
             // btnCalc
             // 
-            this.btnCalc.BackColor = System.Drawing.SystemColors.ControlText;
+            this.btnCalc.BackColor = System.Drawing.SystemColors.GrayText;
             this.btnCalc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCalc.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnCalc.Location = new System.Drawing.Point(650, 169);
             this.btnCalc.Name = "btnCalc";
             this.btnCalc.Size = new System.Drawing.Size(98, 50);
-            this.btnCalc.TabIndex = 3;
+            this.btnCalc.TabIndex = 7;
             this.btnCalc.Text = "Calcular";
             this.btnCalc.UseVisualStyleBackColor = false;
             this.btnCalc.Click += new System.EventHandler(this.btnCalc_Click);
             // 
             // btnLimp
             // 
-            this.btnLimp.BackColor = System.Drawing.SystemColors.ControlText;
+            this.btnLimp.BackColor = System.Drawing.SystemColors.GrayText;
             this.btnLimp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimp.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnLimp.Location = new System.Drawing.Point(650, 225);
             this.btnLimp.Name = "btnLimp";
             this.btnLimp.Size = new System.Drawing.Size(98, 51);
-            this.btnLimp.TabIndex = 4;
+            this.btnLimp.TabIndex = 8;
             this.btnLimp.Text = "Limpar";
             this.btnLimp.UseVisualStyleBackColor = false;
             this.btnLimp.Click += new System.EventHandler(this.btnLimp_Click);
             // 
             // btnSair
             // 
-            this.btnSair.BackColor = System.Drawing.SystemColors.ControlText;
+            this.btnSair.BackColor = System.Drawing.SystemColors.GrayText;
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSair.Location = new System.Drawing.Point(598, 369);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(163, 58);
-            this.btnSair.TabIndex = 5;
+            this.btnSair.TabIndex = 9;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -207,7 +212,7 @@ namespace ProjetoLojaABC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkBlue;
+            this.BackColor = System.Drawing.Color.Silver;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.lblSairResult);
             this.Controls.Add(this.txtNum2);
@@ -219,6 +224,7 @@ namespace ProjetoLojaABC
             this.Controls.Add(this.lblResult);
             this.Controls.Add(this.lblNum2);
             this.Controls.Add(this.lblNum1);
+            this.ForeColor = System.Drawing.SystemColors.Desktop;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCalculadora";
             this.Text = "frmCalculadora";
