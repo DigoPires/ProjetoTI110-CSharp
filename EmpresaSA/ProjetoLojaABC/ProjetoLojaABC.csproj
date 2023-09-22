@@ -58,6 +58,12 @@
     <Compile Include="frmCalculadora.Designer.cs">
       <DependentUpon>frmCalculadora.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFuncionarios.Designer.cs">
+      <DependentUpon>frmFuncionarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -19,7 +19,12 @@ namespace ProjetoLojaABC
 
         private void btnSair_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult result = MessageBox.Show("Deseja Sair?", "Messagem do Sistema", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnEntrar_Click(object sender, EventArgs e)
@@ -34,6 +39,20 @@ namespace ProjetoLojaABC
             // Inicializar as variáveis
             usuario = txtUsuario.Text;
             senha = txtSenha.Text;
+
+            if (usuario.Equals("senac") && senha.Equals("senac"))
+            {
+                frmMenuPrincipal abrir = new frmMenuPrincipal();
+                abrir.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Usuário ou senha inválidos!!!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                txtUsuario.Clear();
+                txtSenha.Clear();
+                txtUsuario.Focus();
+            }
         }
     }
 }

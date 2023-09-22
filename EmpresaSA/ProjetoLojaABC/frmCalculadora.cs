@@ -44,57 +44,63 @@ namespace ProjetoLojaABC
         {
             MessageBox.Show(txtNum1.Text);
 
-
-            if ((rdbAdi.Checked || rdbSub.Checked || rdbMult.Checked || rdbDivi.Checked) && (txtNum1.Text != "" || txtNum2.Text != ""))
+            try
             {
-                //string txt1, txt2;
-                //txt1 = txtNum1.Text;
-                //txt2 = txtNum2.Text;
+                if ((rdbAdi.Checked || rdbSub.Checked || rdbMult.Checked || rdbDivi.Checked) && (txtNum1.Text != "" || txtNum2.Text != ""))
+                {
+                    //string txt1, txt2;
+                    //txt1 = txtNum1.Text;
+                    //txt2 = txtNum2.Text;
 
-                //double.TryParse(txt1, out double num1);
-                //double.TryParse(txt2, out double num2);
+                    //double.TryParse(txt1, out double num1);
+                    //double.TryParse(txt2, out double num2);
 
-                double num1, num2, result = 0;
-                num1 = Convert.ToDouble(txtNum1.Text);
-                num2 = Convert.ToDouble(txtNum2.Text);
+                    double num1, num2, result = 0;
+                    num1 = Convert.ToDouble(txtNum1.Text);
+                    num2 = Convert.ToDouble(txtNum2.Text);
 
-                if (rdbAdi.Checked)
-                {
-                    result = (num1 + num2);
-                }
-                if (rdbSub.Checked)
-                {
-                    result = (num1 - num2);
-                }
-                if (rdbMult.Checked)
-                {
-                    result = (num1 * num2);
-                }
-                if (rdbDivi.Checked)
-                {
-                    if (num2 == 0)
+                    if (rdbAdi.Checked)
                     {
-                        MessageBox.Show("IMPOSSÍVEL DIVIDIR POR 0!", "Mensagem do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        result = (num1 + num2);
                     }
-                    else
+                    if (rdbSub.Checked)
                     {
-                        result = (num1 / num2);
+                        result = (num1 - num2);
                     }
+                    if (rdbMult.Checked)
+                    {
+                        result = (num1 * num2);
+                    }
+                    if (rdbDivi.Checked)
+                    {
+                        if (num2 == 0)
+                        {
+                            MessageBox.Show("IMPOSSÍVEL DIVIDIR POR 0!", "Mensagem do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            result = (num1 / num2);
+                        }
+                    }
+
+                    lblSairResult.Text = result.ToString();
+
+                    // Executando Método/Função limparCampos()
+                    limparCampos();
+
+                    txtNum1.Focus();
                 }
 
-                lblSairResult.Text = result.ToString();
-
-                // Executando Método/Função limparCampos()
+                else
+                {
+                    MessageBox.Show("Impossível fazer o calculo! Nenhuma operação selecionada.", "Mensagem do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Favor inserir somente números!!!", "Mensagem do sistema", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 limparCampos();
-
-                txtNum1.Focus();
-            }
-
-            else
-            {
-                MessageBox.Show("Impossível fazer o calculo! Nenhuma operação selecionada.", "Mensagem do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-                
+            }   
         }
 
 
