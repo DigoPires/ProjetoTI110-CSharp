@@ -8,13 +8,12 @@ namespace ProjetoLojaABC
 {
     public class Pessoa
     {
-        // Variaveis Globais
+        //variáveis globais
         private string nome;
         private string email;
         private int idade;
-
-        //Método construtor
-        public Pessoa() 
+        //método construtor
+        public Pessoa()
         {
 
         }
@@ -23,10 +22,10 @@ namespace ProjetoLojaABC
         {
             //imprimindo
         }
-
         public int calculaIdade(int idade)
         {
             return this.idade = idade + 1;
         }
+
     }
 }

@@ -52,12 +52,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmCalculadora.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmCalculadora.Designer.cs">
-      <DependentUpon>frmCalculadora.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmFuncionarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +70,12 @@
     <Compile Include="frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPesquisarFuncionarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPesquisarFuncionarios.Designer.cs">
+      <DependentUpon>frmPesquisarFuncionarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,14 +88,17 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmCalculadora.resx">
-      <DependentUpon>frmCalculadora.cs</DependentUpon>
+    <EmbeddedResource Include="frmFuncionarios.resx">
+      <DependentUpon>frmFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPesquisarFuncionarios.resx">
+      <DependentUpon>frmPesquisarFuncionarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSplash.resx">
       <DependentUpon>frmSplash.cs</DependentUpon>
