@@ -54,11 +54,7 @@ namespace ProjetoLojaABC
             }
             else
             {
-                MessageBox.Show("Usuário ou senha inválidos!!!",
-                    "Mensagem do sistema.",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error,
-                    MessageBoxDefaultButton.Button1);
+                MessageBox.Show("Usuário ou senha inválidos!!!","Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 txtUsuario.Clear();
                 txtSenha.Clear();
                 txtUsuario.Focus();

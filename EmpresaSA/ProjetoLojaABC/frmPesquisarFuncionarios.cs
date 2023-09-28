@@ -13,15 +13,6 @@ namespace ProjetoLojaABC
 {
     public partial class frmPesquisarFuncionarios : Form
     {
-        //Criando variáveis para controle do menu
-        const int MF_BYCOMMAND = 0X400;
-        [DllImport("user32")]
-        static extern int RemoveMenu(IntPtr hMenu, int nPosition, int wFlags);
-        [DllImport("user32")]
-        static extern IntPtr GetSystemMenu(IntPtr hWnd, bool bRevert);
-        [DllImport("user32")]
-        static extern int GetMenuItemCount(IntPtr hWnd);
-
         // Desabilitar Campos
         public void desabilitarCampos()
         { 
@@ -60,11 +51,6 @@ namespace ProjetoLojaABC
             desabilitarCampos();
         }
 
-        private void frmPesquisarFuncionarios_Load(object sender, EventArgs e)
-        {
-        
-        }
-
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             ltbPesquisar.Items.Clear();
@@ -85,6 +71,21 @@ namespace ProjetoLojaABC
         private void rdbNome_CheckedChanged(object sender, EventArgs e)
         {
             habilitarCampos();
+        }
+
+        private void ltbPesquisar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(ltbPesquisar.SelectedItem != null)
+            {
+                string nome = ltbPesquisar.SelectedItem.ToString();
+                frmFuncionarios abrir = new frmFuncionarios(nome);
+                abrir.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Nenhum item selecionado! Favor selecionar um item.", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
     }
 }

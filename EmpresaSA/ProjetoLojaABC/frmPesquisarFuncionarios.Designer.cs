@@ -102,6 +102,7 @@ namespace ProjetoLojaABC
             this.ltbPesquisar.Name = "ltbPesquisar";
             this.ltbPesquisar.Size = new System.Drawing.Size(538, 166);
             this.ltbPesquisar.TabIndex = 1;
+            this.ltbPesquisar.SelectedIndexChanged += new System.EventHandler(this.ltbPesquisar_SelectedIndexChanged);
             // 
             // btnPesquisar
             // 
@@ -146,7 +147,6 @@ namespace ProjetoLojaABC
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPesquisarFuncionarios";
             this.Text = "frmPesquisarFuncionarios";
-            this.Load += new System.EventHandler(this.frmPesquisarFuncionarios_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
