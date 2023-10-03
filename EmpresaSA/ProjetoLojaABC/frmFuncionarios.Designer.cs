@@ -61,14 +61,14 @@ namespace ProjetoLojaABC
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.btnCarregarCEP = new System.Windows.Forms.Button();
+            this.btnConectar = new System.Windows.Forms.Button();
             this.gpbFuncionarios.SuspendLayout();
             this.pnlCRUD.SuspendLayout();
             this.SuspendLayout();
             // 
             // gpbFuncionarios
             // 
-            this.gpbFuncionarios.Controls.Add(this.btnCarregarCEP);
+            this.gpbFuncionarios.Controls.Add(this.btnConectar);
             this.gpbFuncionarios.Controls.Add(this.txtCidade);
             this.gpbFuncionarios.Controls.Add(this.lblCidade);
             this.gpbFuncionarios.Controls.Add(this.cbbEstado);
@@ -102,16 +102,16 @@ namespace ProjetoLojaABC
             // 
             // txtCidade
             // 
-            this.txtCidade.Location = new System.Drawing.Point(86, 355);
+            this.txtCidade.Location = new System.Drawing.Point(79, 358);
             this.txtCidade.MaxLength = 100;
             this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(297, 24);
+            this.txtCidade.Size = new System.Drawing.Size(382, 24);
             this.txtCidade.TabIndex = 11;
             // 
             // lblCidade
             // 
             this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(29, 361);
+            this.lblCidade.Location = new System.Drawing.Point(18, 361);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(54, 18);
             this.lblCidade.TabIndex = 20;
@@ -179,6 +179,7 @@ namespace ProjetoLojaABC
             this.mskCEP.Name = "mskCEP";
             this.mskCEP.Size = new System.Drawing.Size(78, 24);
             this.mskCEP.TabIndex = 7;
+            this.mskCEP.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mskCEP_KeyDown);
             // 
             // lblCEP
             // 
@@ -407,15 +408,15 @@ namespace ProjetoLojaABC
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // btnCarregarCEP
+            // btnConectar
             // 
-            this.btnCarregarCEP.Location = new System.Drawing.Point(503, 355);
-            this.btnCarregarCEP.Name = "btnCarregarCEP";
-            this.btnCarregarCEP.Size = new System.Drawing.Size(225, 61);
-            this.btnCarregarCEP.TabIndex = 21;
-            this.btnCarregarCEP.Text = "Carregar CEP";
-            this.btnCarregarCEP.UseVisualStyleBackColor = true;
-            this.btnCarregarCEP.Click += new System.EventHandler(this.btnCarregarCEP_Click);
+            this.btnConectar.Location = new System.Drawing.Point(539, 338);
+            this.btnConectar.Name = "btnConectar";
+            this.btnConectar.Size = new System.Drawing.Size(177, 65);
+            this.btnConectar.TabIndex = 21;
+            this.btnConectar.Text = "Conectar";
+            this.btnConectar.UseVisualStyleBackColor = true;
+            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
             // 
             // frmFuncionarios
             // 
@@ -471,6 +472,6 @@ namespace ProjetoLojaABC
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.Button btnCarregarCEP;
+        private System.Windows.Forms.Button btnConectar;
     }
 }
