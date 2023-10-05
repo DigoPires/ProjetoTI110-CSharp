@@ -145,6 +145,46 @@ namespace ProjetoLojaABC
             txtNome.Focus();
         }
 
+        // Carrega código
+        public void carregarCod()
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select cod_func+1 from tb_Funcionarios order by cod_func desc;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Connection = Conexao.obterConexao();
+
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            txtCodigo.Text = Convert.ToString(DR.GetString(0));
+
+            Conexao.fecharConexao();
+        }
+
+        public void carregarFunc(string nome)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tb_Funcionarios where nome = '@nome';";
+            comm.CommandType = CommandType.Text;
+            
+            comm.Connection = Conexao.obterConexao();
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar,100).Value = nome;
+
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            txtCodigo.Text = Convert.ToString(DR.GetString(0));
+            txtNome.Text = DR.GetString(1);
+            txtEmail.Text = DR.GetString(2);
+
+            Conexao.fecharConexao();
+        }
+
         private void gpbFuncionarios_Enter(object sender, EventArgs e)
         {
 
@@ -181,10 +221,11 @@ namespace ProjetoLojaABC
         private void btnNovo_Click(object sender, EventArgs e)
         {
             habilitarCampos();
+            carregarCod();
         }
 
         // Cadastrando funcionários no Banco de Dados
-        public void cadastraFunc()
+        public int cadastraFunc()
         {
             MySqlCommand comm = new MySqlCommand();
             comm.CommandText = "insert into tb_Funcionarios(nome,email,cpf,d_Nasc,endereco,cep,numero,bairro,estado,cidade)values(@nome,@email,@cpf,@d_Nasc,@endereco,@cep,@numero,@bairro,@estado,@cidade);";
@@ -195,7 +236,7 @@ namespace ProjetoLojaABC
             comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = txtNome.Text;
             comm.Parameters.Add("@email", MySqlDbType.VarChar, 100).Value = txtEmail.Text;
             comm.Parameters.Add("@cpf", MySqlDbType.VarChar, 14).Value = mskCPF.Text;
-            comm.Parameters.Add("@d_Nasc", MySqlDbType.Date).Value = dtpDNasc.Text;
+            comm.Parameters.Add("@d_Nasc", MySqlDbType.Date).Value = Convert.ToDateTime(dtpDNasc.Text);
             comm.Parameters.Add("@endereco", MySqlDbType.VarChar, 100).Value = txtEndereco.Text;
             comm.Parameters.Add("@cep", MySqlDbType.VarChar, 9).Value = mskCEP.Text;
             comm.Parameters.Add("@numero", MySqlDbType.VarChar, 10).Value = txtNumero.Text;
@@ -204,9 +245,11 @@ namespace ProjetoLojaABC
             comm.Parameters.Add("@cidade", MySqlDbType.VarChar, 100).Value = txtCidade.Text;
 
             comm.Connection = Conexao.obterConexao();
-            comm.ExecuteNonQuery();
-
+            
+            int res = comm.ExecuteNonQuery();
             Conexao.fecharConexao();
+
+            return res;
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -214,14 +257,20 @@ namespace ProjetoLojaABC
             desabilitarCamposNovo();
             if (txtNome.Text.Equals("") || txtEmail.Text.Equals("") || mskCEP.Text.Equals("   .   .   -") || txtEndereco.Text.Equals("") || mskCPF.Text.Equals("     -") || txtNumero.Text.Equals("") || txtBairro.Text.Equals("") || cbbEstado.Text.Equals("") || txtCidade.Text.Equals(""))
             {
-                MessageBox.Show("Favor preencher os campos!!!");
+                MessageBox.Show("Favor preencher todos os campos!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
             }
             else
             {
-                cadastraFunc();
-                MessageBox.Show("Cadastrado com Sucesso.");
-                limparCampos();
-                desabilitarCampos();
+                if(cadastraFunc() == 1)
+                {
+                    MessageBox.Show("Cadastrado com sucesso!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    limparCampos();
+                    desabilitarCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao concluir o cadastro.", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
             }
         }
 

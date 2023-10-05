@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using MySql.Data.MySqlClient;
 
 namespace ProjetoLojaABC
 {
@@ -15,7 +16,7 @@ namespace ProjetoLojaABC
     {
         // Desabilitar Campos
         public void desabilitarCampos()
-        { 
+        {
             txtDescricao.Enabled = false;
 
             rdbCodigo.Checked = false;
@@ -45,6 +46,60 @@ namespace ProjetoLojaABC
             ltbPesquisar.Items.Clear();
         }
 
+        // Pesquisar por código
+        public void pesquisarCod(int codigo)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tb_Funcionarios where cod_func = @cod_func;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+
+            comm.Parameters.Add("@cod_func", MySqlDbType.Int32).Value = codigo;
+
+            comm.Connection = Conexao.obterConexao();
+
+            // Carregando dados para objeto de tabela
+            MySqlDataReader DR;
+
+            DR = comm.ExecuteReader();
+            DR.Read();
+
+            ltbPesquisar.Items.Clear();
+
+            ltbPesquisar.Items.Add(DR.GetString(1));
+
+            Conexao.fecharConexao();
+        }
+
+        // Pesquisar por nome
+        public void pesquisarNome(string nome)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tb_Funcionarios where nome like @nome;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+
+            comm.Parameters.Add("@nome", MySqlDbType.VarChar, 100).Value = '%' +  nome + '%';
+
+            comm.Connection = Conexao.obterConexao();
+
+            // Carregando dados para objeto de tabela
+            MySqlDataReader DR;
+
+            DR = comm.ExecuteReader();
+
+            ltbPesquisar.Items.Clear();
+
+            while (DR.Read())
+            { 
+                ltbPesquisar.Items.Add(DR.GetString(1));
+            }
+
+            Conexao.fecharConexao();
+        }
+
         public frmPesquisarFuncionarios()
         {
             InitializeComponent();
@@ -53,8 +108,15 @@ namespace ProjetoLojaABC
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            ltbPesquisar.Items.Clear();
-            ltbPesquisar.Items.Add(txtDescricao.Text);
+            if (rdbCodigo.Checked)
+            {
+                pesquisarCod(Convert.ToInt32(txtDescricao.Text));
+            }
+
+            if (rdbNome.Checked)
+            {
+                pesquisarNome(txtDescricao.Text);
+            }
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
@@ -75,7 +137,7 @@ namespace ProjetoLojaABC
 
         private void ltbPesquisar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ltbPesquisar.SelectedItem != null)
+            if (ltbPesquisar.SelectedItem != null)
             {
                 string nome = ltbPesquisar.SelectedItem.ToString();
                 frmFuncionarios abrir = new frmFuncionarios(nome);
