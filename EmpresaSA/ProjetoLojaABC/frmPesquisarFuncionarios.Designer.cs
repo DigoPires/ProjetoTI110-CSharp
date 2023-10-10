@@ -38,6 +38,7 @@ namespace ProjetoLojaABC
             this.ltbPesquisar = new System.Windows.Forms.ListBox();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -135,17 +136,34 @@ namespace ProjetoLojaABC
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
+            // btnVoltar
+            // 
+            this.btnVoltar.FlatAppearance.BorderSize = 2;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Image = ((System.Drawing.Image)(resources.GetObject("btnVoltar.Image")));
+            this.btnVoltar.Location = new System.Drawing.Point(369, 401);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(105, 41);
+            this.btnVoltar.TabIndex = 20;
+            this.btnVoltar.Text = "&Voltar";
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
             // frmPesquisarFuncionarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 403);
+            this.ClientSize = new System.Drawing.Size(812, 454);
+            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnPesquisar);
             this.Controls.Add(this.ltbPesquisar);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmPesquisarFuncionarios";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPesquisarFuncionarios";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -163,5 +181,6 @@ namespace ProjetoLojaABC
         private System.Windows.Forms.ListBox ltbPesquisar;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.Button btnVoltar;
     }
 }

@@ -149,5 +149,12 @@ namespace ProjetoLojaABC
                 MessageBox.Show("Nenhum item selecionado! Favor selecionar um item.", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            frmFuncionarios abrir = new frmFuncionarios();
+            abrir.Show();
+            this.Hide();
+        }
     }
 }
