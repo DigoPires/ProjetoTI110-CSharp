@@ -37,3 +37,4 @@ C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\E
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\x64\Debug\ProjetoLojaABC.exe
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\x64\Debug\ProjetoLojaABC.pdb
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\x64\Debug\ProjetoLojaABC.frmCadastroUsuario.resources
+C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\x64\Debug\ProjetoLojaABC.frmPesquisarUsuarios.resources

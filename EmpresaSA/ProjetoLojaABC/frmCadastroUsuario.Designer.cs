@@ -110,6 +110,7 @@ namespace ProjetoLojaABC
             this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // btnEcluir
             // 
@@ -136,6 +137,7 @@ namespace ProjetoLojaABC
             this.btnAlterar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAlterar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnCadastrar
             // 
@@ -227,9 +229,11 @@ namespace ProjetoLojaABC
             // 
             // txtRepetirSenha
             // 
+            this.txtRepetirSenha.Font = new System.Drawing.Font("Wingdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.txtRepetirSenha.Location = new System.Drawing.Point(138, 316);
             this.txtRepetirSenha.MaxLength = 100;
             this.txtRepetirSenha.Name = "txtRepetirSenha";
+            this.txtRepetirSenha.PasswordChar = 'l';
             this.txtRepetirSenha.Size = new System.Drawing.Size(183, 24);
             this.txtRepetirSenha.TabIndex = 7;
             // 
@@ -244,9 +248,11 @@ namespace ProjetoLojaABC
             // 
             // txtSenha
             // 
+            this.txtSenha.Font = new System.Drawing.Font("Wingdings", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(2)));
             this.txtSenha.Location = new System.Drawing.Point(138, 231);
             this.txtSenha.MaxLength = 100;
             this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = 'l';
             this.txtSenha.Size = new System.Drawing.Size(183, 24);
             this.txtSenha.TabIndex = 3;
             // 
