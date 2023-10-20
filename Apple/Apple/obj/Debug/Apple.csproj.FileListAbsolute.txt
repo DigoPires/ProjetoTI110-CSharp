@@ -52,3 +52,4 @@ C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\A
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\Apple\Apple\obj\Debug\Apple.csproj.CopyComplete
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\Apple\Apple\obj\Debug\Apple.exe
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\Apple\Apple\obj\Debug\Apple.pdb
+C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\Apple\Apple\bin\Debug\ZstdNet.dll

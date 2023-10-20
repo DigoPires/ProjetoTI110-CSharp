@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
 
-namespace ProjetoLojaABC
+namespace Apple
 {
     class Conexao
     {
@@ -23,12 +23,13 @@ namespace ProjetoLojaABC
             {
                 con = null;
             }
+
             return con;
         }
 
         public static void fecharConexao()
         {
-            if (con != null)
+            if(con != null)
             {
                 con.Close();
             }
