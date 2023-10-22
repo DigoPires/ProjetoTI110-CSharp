@@ -113,7 +113,7 @@ namespace Apple
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(81, 34);
             this.btnSair.TabIndex = 6;
-            this.btnSair.Text = "SAIR";
+            this.btnSair.Text = "&SAIR";
             this.btnSair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSair.UseVisualStyleBackColor = false;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
