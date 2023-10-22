@@ -308,6 +308,7 @@ namespace Apple
         private void btnNovo_Click(object sender, EventArgs e)
         {
             habilitarCamposNovo();
+            limparCampos();
             carregarCod();
         }
 
@@ -320,14 +321,7 @@ namespace Apple
         {
             if (rdbCodigo.Checked)
             {
-                try
-                {
-                    pesquisarCod(Convert.ToInt32(txtPesquisa.Text));
-                }
-                catch (Exception)
-                {
-
-                }
+                pesquisarCod(Convert.ToInt32(txtPesquisa.Text));
             }
 
             if (rdbDescricao.Checked)
@@ -365,6 +359,7 @@ namespace Apple
                 carregarItens(desc);
                 limparPesquisa();
                 habilitarCamposPesquisa();
+                btnNovo.Enabled = true;
             }
             else
             {
