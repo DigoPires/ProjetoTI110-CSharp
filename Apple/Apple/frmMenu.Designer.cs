@@ -234,7 +234,6 @@ namespace Apple
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(79, 23);
             this.txtValor.TabIndex = 5;
-            this.txtValor.TextChanged += new System.EventHandler(this.txtValor_TextChanged);
             // 
             // lblValor
             // 

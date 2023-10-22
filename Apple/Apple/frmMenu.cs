@@ -312,10 +312,7 @@ namespace Apple
             carregarCod();
         }
 
-        private void txtValor_TextChanged(object sender, EventArgs e)
-        {
-            txtValor.Text = string.Format("{0:C}", txtValor.Text);
-        }
+        // txtValor.Text = string.Format("R${0:C2}", txtValor.Text);
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
@@ -328,6 +325,7 @@ namespace Apple
             {
                 pesquisarDesc(txtPesquisa.Text);
             }
+
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)

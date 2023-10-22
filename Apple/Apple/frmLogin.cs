@@ -20,7 +20,7 @@ namespace Apple
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            if (txtNome.Text == "admin" && txtSenha.Text == "apple123")
+            if (txtNome.Text.ToLower() == "admin" && txtSenha.Text == "apple123")
             {
                 frmMenu abrir = new frmMenu();
                 abrir.Show();
