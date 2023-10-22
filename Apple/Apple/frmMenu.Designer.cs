@@ -361,6 +361,7 @@ namespace Apple
             this.Controls.Add(this.gpbDados);
             this.Controls.Add(this.pnlCRUD);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
