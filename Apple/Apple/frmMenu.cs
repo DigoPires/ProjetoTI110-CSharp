@@ -318,7 +318,14 @@ namespace Apple
         {
             if (rdbCodigo.Checked)
             {
-                pesquisarCod(Convert.ToInt32(txtPesquisa.Text));
+                try
+                {
+                    pesquisarCod(Convert.ToInt32(txtPesquisa.Text));
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Digite apenas números!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
             }
 
             if (rdbDescricao.Checked)
