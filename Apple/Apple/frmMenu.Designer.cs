@@ -114,6 +114,7 @@ namespace Apple
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -252,6 +253,7 @@ namespace Apple
             this.dtpDataEntrada.Name = "dtpDataEntrada";
             this.dtpDataEntrada.Size = new System.Drawing.Size(292, 23);
             this.dtpDataEntrada.TabIndex = 3;
+            this.dtpDataEntrada.Value = new System.DateTime(2023, 10, 22, 11, 4, 12, 0);
             // 
             // txtQuantidade
             // 
@@ -312,6 +314,7 @@ namespace Apple
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(292, 23);
             this.txtPesquisa.TabIndex = 8;
+            this.txtPesquisa.TextChanged += new System.EventHandler(this.txtPesquisa_TextChanged);
             // 
             // rdbDescricao
             // 
@@ -324,6 +327,7 @@ namespace Apple
             this.rdbDescricao.TabStop = true;
             this.rdbDescricao.Text = "Descrição";
             this.rdbDescricao.UseVisualStyleBackColor = true;
+            this.rdbDescricao.CheckedChanged += new System.EventHandler(this.rdbDescricao_CheckedChanged);
             // 
             // rdbCodigo
             // 
@@ -336,6 +340,7 @@ namespace Apple
             this.rdbCodigo.TabStop = true;
             this.rdbCodigo.Text = "Código";
             this.rdbCodigo.UseVisualStyleBackColor = true;
+            this.rdbCodigo.CheckedChanged += new System.EventHandler(this.rdbCodigo_CheckedChanged);
             // 
             // lblPesquisa
             // 

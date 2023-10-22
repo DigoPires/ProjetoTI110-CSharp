@@ -141,53 +141,81 @@ namespace Apple
 
         public void pesquisarCod(int codigo)
         {
-            MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "select * from tb_Produtos where cod_prod = @cod_prod;";
-            comm.CommandType = CommandType.Text;
+            try
+            {
+                MySqlCommand comm = new MySqlCommand();
+                comm.CommandText = "select * from tb_Produtos where cod_prod = @cod_prod;";
+                comm.CommandType = CommandType.Text;
 
-            comm.Parameters.Clear();
+                comm.Parameters.Clear();
 
-            comm.Parameters.Add("@cod_prod", MySqlDbType.Int32).Value = codigo;
+                comm.Parameters.Add("@cod_prod", MySqlDbType.Int32).Value = codigo;
 
-            comm.Connection = Conexao.obterConexao();
+                comm.Connection = Conexao.obterConexao();
 
-            // Carregando dados para objeto de tabela
-            MySqlDataReader DR;
+                // Carregando dados para objeto de tabela
+                MySqlDataReader DR;
 
-            DR = comm.ExecuteReader();
-            DR.Read();
+                DR = comm.ExecuteReader();
 
-            ltbPesquisa.Items.Clear();
+                ltbPesquisa.Items.Clear();
 
-            ltbPesquisa.Items.Add(DR.GetString(1));
+                if (DR.Read())
+                {
+                    ltbPesquisa.Items.Add(DR.GetString(1));
+                }
+                else
+                {
+                    MessageBox.Show("Não foi possível encontrar os dados! Verifique o código.", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
 
-            Conexao.fecharConexao();
+                Conexao.fecharConexao();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Não foi possível encontrar os dados! Verifique a caixa selcionada.", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
         public void pesquisarDesc(string descricao)
         {
-            MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "select * from tb_Produtos where descricao like @descricao;";
-            comm.CommandType = CommandType.Text;
-
-            comm.Parameters.Clear();
-
-            comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = '%' + descricao + '%';
-
-            comm.Connection = Conexao.obterConexao();
-
-            // Carregando dados para objeto de tabela
-            MySqlDataReader DR;
-
-            DR = comm.ExecuteReader();
-
-            ltbPesquisa.Items.Clear();
-
-            while (DR.Read())
+            try
             {
-                ltbPesquisa.Items.Add(DR.GetString(1));
-            }
+                MySqlCommand comm = new MySqlCommand();
+                comm.CommandText = "select * from tb_Produtos where descricao like @descricao;";
+                comm.CommandType = CommandType.Text;
 
-            Conexao.fecharConexao();
+                comm.Parameters.Clear();
+
+                comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = '%' + descricao + '%';
+
+                comm.Connection = Conexao.obterConexao();
+
+                // Carregando dados para objeto de tabela
+                MySqlDataReader DR;
+
+                DR = comm.ExecuteReader();
+
+                ltbPesquisa.Items.Clear();
+
+                if (DR.Read())
+                {
+                    ltbPesquisa.Items.Add(DR.GetString(1));
+                    while (DR.Read())
+                    {
+                        ltbPesquisa.Items.Add(DR.GetString(1));
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Não existe dados com está descrição!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                }
+
+                Conexao.fecharConexao();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Não foi possível encontrar os dados! Verifique a caixa selcionada.", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
 
         public void carregarItens(string desc)
@@ -261,6 +289,22 @@ namespace Apple
             return res;
         }
 
+        public int excluirProdutos(int codigo)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "delete from tb_Produtos where cod_prod = @cod_prod;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@cod_prod", MySqlDbType.Int32).Value = codigo;
+
+            comm.Connection = Conexao.obterConexao();
+            int res = comm.ExecuteNonQuery();
+            Conexao.fecharConexao();
+
+            return res;
+        }
+
         private void btnNovo_Click(object sender, EventArgs e)
         {
             habilitarCamposNovo();
@@ -276,7 +320,14 @@ namespace Apple
         {
             if (rdbCodigo.Checked)
             {
-                pesquisarCod(Convert.ToInt32(txtPesquisa.Text));
+                try
+                {
+                    pesquisarCod(Convert.ToInt32(txtPesquisa.Text));
+                }
+                catch (Exception)
+                {
+
+                }
             }
 
             if (rdbDescricao.Checked)
@@ -301,7 +352,7 @@ namespace Apple
                 }
                 else
                 {
-                    MessageBox.Show("Erro ao concluir o cadastro.", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                    MessageBox.Show("Erro ao concluir o cadastro!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
                 }
             }
         }
@@ -324,6 +375,10 @@ namespace Apple
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             limparCampos();
+            if (btnNovo.Enabled == false)
+            {
+                carregarCod();
+            }
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -335,7 +390,49 @@ namespace Apple
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            alterarProduto(Convert.ToInt32(txtCodigo.Text));
+            if (alterarProduto(Convert.ToInt32(txtCodigo.Text)) == 1)
+            {
+                MessageBox.Show("Alterado com sucesso!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                limparCampos();
+                desabilitarCamposLoad();
+            }
+            else
+            {
+                MessageBox.Show("Erro ao alterar informações!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (excluirProdutos(Convert.ToInt32(txtCodigo.Text)) == 1)
+            {
+                DialogResult res = MessageBox.Show("Deseja realmente excluir?", "Mensagem do sistema", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3);
+                if (res == DialogResult.Yes)
+                {
+                    MessageBox.Show("Excluído com sucesso!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    limparCampos();
+                    desabilitarCamposLoad();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Erro ao exlcuir os dados!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void rdbCodigo_CheckedChanged(object sender, EventArgs e)
+        {
+            btnLimpar.Enabled = true;
+        }
+
+        private void rdbDescricao_CheckedChanged(object sender, EventArgs e)
+        {
+            btnLimpar.Enabled = true;
+        }
+
+        private void txtPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            btnLimpar.Enabled = true;
         }
     }
 }
