@@ -37,22 +37,23 @@ namespace Apple
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
-            this.btnPesquisar = new System.Windows.Forms.Button();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.lblDescricao = new System.Windows.Forms.Label();
             this.gpbDados = new System.Windows.Forms.GroupBox();
-            this.txtValor = new System.Windows.Forms.TextBox();
-            this.lblValor = new System.Windows.Forms.Label();
+            this.txtValorUnit = new System.Windows.Forms.TextBox();
+            this.lblValorUnit = new System.Windows.Forms.Label();
             this.dtpDataEntrada = new System.Windows.Forms.DateTimePicker();
             this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.lblQuantidade = new System.Windows.Forms.Label();
             this.lblDataEntrada = new System.Windows.Forms.Label();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
+            this.btnVerTudo = new System.Windows.Forms.Button();
             this.ltbPesquisa = new System.Windows.Forms.ListBox();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.rdbDescricao = new System.Windows.Forms.RadioButton();
+            this.btnPesquisar = new System.Windows.Forms.Button();
             this.rdbCodigo = new System.Windows.Forms.RadioButton();
             this.lblPesquisa = new System.Windows.Forms.Label();
             this.pnlCRUD.SuspendLayout();
@@ -158,20 +159,6 @@ namespace Apple
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisar.Image = global::Apple.Properties.Resources.search;
-            this.btnPesquisar.Location = new System.Drawing.Point(128, 325);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(105, 41);
-            this.btnPesquisar.TabIndex = 10;
-            this.btnPesquisar.Text = "&Pesquisar";
-            this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
-            // 
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
@@ -210,8 +197,8 @@ namespace Apple
             // 
             // gpbDados
             // 
-            this.gpbDados.Controls.Add(this.txtValor);
-            this.gpbDados.Controls.Add(this.lblValor);
+            this.gpbDados.Controls.Add(this.txtValorUnit);
+            this.gpbDados.Controls.Add(this.lblValorUnit);
             this.gpbDados.Controls.Add(this.dtpDataEntrada);
             this.gpbDados.Controls.Add(this.txtQuantidade);
             this.gpbDados.Controls.Add(this.lblQuantidade);
@@ -227,23 +214,23 @@ namespace Apple
             this.gpbDados.TabStop = false;
             this.gpbDados.Text = "Dados";
             // 
-            // txtValor
+            // txtValorUnit
             // 
-            this.txtValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.txtValor.Location = new System.Drawing.Point(223, 278);
-            this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(79, 23);
-            this.txtValor.TabIndex = 5;
+            this.txtValorUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtValorUnit.Location = new System.Drawing.Point(223, 278);
+            this.txtValorUnit.Name = "txtValorUnit";
+            this.txtValorUnit.Size = new System.Drawing.Size(97, 23);
+            this.txtValorUnit.TabIndex = 5;
             // 
-            // lblValor
+            // lblValorUnit
             // 
-            this.lblValor.AutoSize = true;
-            this.lblValor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblValor.Location = new System.Drawing.Point(220, 258);
-            this.lblValor.Name = "lblValor";
-            this.lblValor.Size = new System.Drawing.Size(41, 17);
-            this.lblValor.TabIndex = 23;
-            this.lblValor.Text = "Valor";
+            this.lblValorUnit.AutoSize = true;
+            this.lblValorUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.lblValorUnit.Location = new System.Drawing.Point(220, 258);
+            this.lblValorUnit.Name = "lblValorUnit";
+            this.lblValorUnit.Size = new System.Drawing.Size(94, 17);
+            this.lblValorUnit.TabIndex = 23;
+            this.lblValorUnit.Text = "Valor Unitário";
             // 
             // dtpDataEntrada
             // 
@@ -284,6 +271,7 @@ namespace Apple
             // 
             // gpbPesquisa
             // 
+            this.gpbPesquisa.Controls.Add(this.btnVerTudo);
             this.gpbPesquisa.Controls.Add(this.ltbPesquisa);
             this.gpbPesquisa.Controls.Add(this.txtPesquisa);
             this.gpbPesquisa.Controls.Add(this.rdbDescricao);
@@ -296,6 +284,20 @@ namespace Apple
             this.gpbPesquisa.TabIndex = 23;
             this.gpbPesquisa.TabStop = false;
             this.gpbPesquisa.Text = "Pesquisa";
+            // 
+            // btnVerTudo
+            // 
+            this.btnVerTudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerTudo.Image = global::Apple.Properties.Resources.see;
+            this.btnVerTudo.Location = new System.Drawing.Point(190, 325);
+            this.btnVerTudo.Name = "btnVerTudo";
+            this.btnVerTudo.Size = new System.Drawing.Size(105, 41);
+            this.btnVerTudo.TabIndex = 27;
+            this.btnVerTudo.Text = "&Ver Tudo";
+            this.btnVerTudo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVerTudo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVerTudo.UseVisualStyleBackColor = true;
+            this.btnVerTudo.Click += new System.EventHandler(this.btnVerTudo_Click);
             // 
             // ltbPesquisa
             // 
@@ -327,6 +329,20 @@ namespace Apple
             this.rdbDescricao.Text = "Descrição";
             this.rdbDescricao.UseVisualStyleBackColor = true;
             this.rdbDescricao.CheckedChanged += new System.EventHandler(this.rdbDescricao_CheckedChanged);
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisar.Image = global::Apple.Properties.Resources.search;
+            this.btnPesquisar.Location = new System.Drawing.Point(73, 325);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(105, 41);
+            this.btnPesquisar.TabIndex = 10;
+            this.btnPesquisar.Text = "&Pesquisar";
+            this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // rdbCodigo
             // 
@@ -394,12 +410,13 @@ namespace Apple
         private System.Windows.Forms.GroupBox gpbPesquisa;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Label lblPesquisa;
-        private System.Windows.Forms.TextBox txtValor;
-        private System.Windows.Forms.Label lblValor;
+        private System.Windows.Forms.TextBox txtValorUnit;
+        private System.Windows.Forms.Label lblValorUnit;
         private System.Windows.Forms.RadioButton rdbCodigo;
         private System.Windows.Forms.RadioButton rdbDescricao;
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.ListBox ltbPesquisa;
+        private System.Windows.Forms.Button btnVerTudo;
     }
 }
 

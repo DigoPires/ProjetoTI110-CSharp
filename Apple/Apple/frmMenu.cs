@@ -25,7 +25,7 @@ namespace Apple
             txtDescricao.Enabled = false;
             dtpDataEntrada.Enabled = false;
             txtQuantidade.Enabled = false;
-            txtValor.Enabled = false;
+            txtValorUnit.Enabled = false;
 
             btnCadastrar.Enabled = false;
             btnAlterar.Enabled = false;
@@ -40,7 +40,7 @@ namespace Apple
             txtDescricao.Enabled = true;
             dtpDataEntrada.Enabled = true;
             txtQuantidade.Enabled = true;
-            txtValor.Enabled = true;
+            txtValorUnit.Enabled = true;
 
             btnCadastrar.Enabled = true;
             btnAlterar.Enabled = false;
@@ -58,7 +58,7 @@ namespace Apple
             txtDescricao.Enabled = false;
             dtpDataEntrada.Enabled = false;
             txtQuantidade.Enabled = false;
-            txtValor.Enabled = false;
+            txtValorUnit.Enabled = false;
 
             btnCadastrar.Enabled = false;
             btnAlterar.Enabled = false;
@@ -73,7 +73,7 @@ namespace Apple
             txtDescricao.Enabled = true;
             dtpDataEntrada.Enabled = true;
             txtQuantidade.Enabled = true;
-            txtValor.Enabled = true;
+            txtValorUnit.Enabled = true;
 
             btnCadastrar.Enabled = true;
             btnAlterar.Enabled = true;
@@ -89,7 +89,7 @@ namespace Apple
             txtDescricao.Enabled = true;
             dtpDataEntrada.Enabled = true;
             txtQuantidade.Enabled = true;
-            txtValor.Enabled = true;
+            txtValorUnit.Enabled = true;
 
             btnCadastrar.Enabled = false;
             btnAlterar.Enabled = true;
@@ -123,7 +123,7 @@ namespace Apple
             txtCodigo.Clear();
             txtDescricao.Clear();
             txtQuantidade.Clear();
-            txtValor.Clear();
+            txtValorUnit.Clear();
 
             rdbCodigo.Checked = false;
             rdbDescricao.Checked = false;
@@ -240,7 +240,7 @@ namespace Apple
             txtDescricao.Text = DR.GetString(1).ToString();
             dtpDataEntrada.Text = DR.GetString(2).ToString();
             txtQuantidade.Text = DR.GetString(3).ToString();
-            txtValor.Text = DR.GetString(4).ToString();
+            txtValorUnit.Text = DR.GetString(4).ToString();
 
             Conexao.fecharConexao();
         }
@@ -249,14 +249,14 @@ namespace Apple
         public int cadastrarProdutos()
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "insert into tb_Produtos(descricao,data_Entrada,quantidade,valor) values(@descricao,@data_Entrada,@quantidade,@valor);";
+            comm.CommandText = "insert into tb_Produtos(descricao,data_Entrada,quantidade,valorUnit) values(@descricao,@data_Entrada,@quantidade,@valorUnit);";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
             comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = txtDescricao.Text;
             comm.Parameters.Add("@data_Entrada", MySqlDbType.Date).Value = Convert.ToDateTime(dtpDataEntrada.Text);
             comm.Parameters.Add("@quantidade", MySqlDbType.Decimal).Value = txtQuantidade.Text;
-            comm.Parameters.Add("@valor", MySqlDbType.Decimal).Value = txtValor.Text;
+            comm.Parameters.Add("@valorUnit", MySqlDbType.Decimal).Value = txtValorUnit.Text;
 
             comm.Connection = Conexao.obterConexao();
 
@@ -270,7 +270,7 @@ namespace Apple
         public int alterarProduto(int codigo)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "update tb_Produtos set descricao = @descricao, data_Entrada = @data_Entrada, quantidade = @quantidade, valor = @valor where cod_prod = @cod_prod;";
+            comm.CommandText = "update tb_Produtos set descricao = @descricao, data_Entrada = @data_Entrada, quantidade = @quantidade, valorUnit = @valorUnit where cod_prod = @cod_prod;";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
@@ -278,7 +278,7 @@ namespace Apple
             comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = txtDescricao.Text;
             comm.Parameters.Add("@data_Entrada", MySqlDbType.Date).Value = Convert.ToDateTime(dtpDataEntrada.Text);
             comm.Parameters.Add("@quantidade", MySqlDbType.Decimal).Value = txtQuantidade.Text;
-            comm.Parameters.Add("@valor", MySqlDbType.Decimal).Value = txtValor.Text;
+            comm.Parameters.Add("@valorUnit", MySqlDbType.Decimal).Value = txtValorUnit.Text;
 
             comm.Connection = Conexao.obterConexao();
 
@@ -305,6 +305,24 @@ namespace Apple
             return res;
         }
 
+        public void verTudo()
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "select * from tb_Produtos";
+            comm.CommandType = CommandType.Text;
+
+            comm.Connection = Conexao.obterConexao();
+
+            MySqlDataReader DR;
+            DR = comm.ExecuteReader();
+            while (DR.Read())
+            {
+                ltbPesquisa.Items.Add(DR.GetString(1));
+            }
+
+            Conexao.fecharConexao();
+        }
+
         private void btnNovo_Click(object sender, EventArgs e)
         {
             habilitarCamposNovo();
@@ -312,7 +330,7 @@ namespace Apple
             carregarCod();
         }
 
-        // txtValor.Text = string.Format("R${0:C2}", txtValor.Text);
+        // txtValorUnit.Text = string.Format("R${0:C2}", txtValorUnit.Text);
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
@@ -337,7 +355,7 @@ namespace Apple
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (txtDescricao.Text.Equals("") || dtpDataEntrada.Text.Equals("") || txtQuantidade.Text.Equals("") || txtValor.Text.Equals(""))
+            if (txtDescricao.Text.Equals("") || dtpDataEntrada.Text.Equals("") || txtQuantidade.Text.Equals("") || txtValorUnit.Text.Equals(""))
             {
                 MessageBox.Show("Preencha todos os campos!", "Mensagem do Sistema", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
@@ -418,6 +436,11 @@ namespace Apple
             {
                 MessageBox.Show("Erro ao exlcuir os dados!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
+        }
+
+        private void btnVerTudo_Click(object sender, EventArgs e)
+        {
+            verTudo();
         }
 
         private void rdbCodigo_CheckedChanged(object sender, EventArgs e)
