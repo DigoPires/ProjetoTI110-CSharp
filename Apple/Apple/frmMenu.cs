@@ -315,6 +315,9 @@ namespace Apple
 
             MySqlDataReader DR;
             DR = comm.ExecuteReader();
+
+            ltbPesquisa.Items.Clear();
+
             while (DR.Read())
             {
                 ltbPesquisa.Items.Add(DR.GetString(1));

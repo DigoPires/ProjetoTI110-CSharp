@@ -38,3 +38,10 @@ C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\E
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\x64\Debug\ProjetoLojaABC.pdb
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\x64\Debug\ProjetoLojaABC.frmCadastroUsuario.resources
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\x64\Debug\ProjetoLojaABC.frmPesquisarUsuarios.resources
+C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\bin\x64\Debug\AForge.dll
+C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\bin\x64\Debug\AForge.Video.DirectShow.dll
+C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\bin\x64\Debug\AForge.Video.dll
+C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\bin\x64\Debug\AForge.xml
+C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\bin\x64\Debug\AForge.Video.xml
+C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\bin\x64\Debug\AForge.Video.DirectShow.xml
+C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\EmpresaSA\ProjetoLojaABC\obj\x64\Debug\ProjetoLojaABC.frmWebCam.resources
