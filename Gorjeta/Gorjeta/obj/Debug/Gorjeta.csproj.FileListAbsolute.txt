@@ -1,0 +1,9 @@
+C:\Users\rodri\OneDrive\Documentos\Visual Studio 2019\ProjetoC#\Gorjeta\Gorjeta\bin\Debug\Gorjeta.exe.config
+C:\Users\rodri\OneDrive\Documentos\Visual Studio 2019\ProjetoC#\Gorjeta\Gorjeta\bin\Debug\Gorjeta.exe
+C:\Users\rodri\OneDrive\Documentos\Visual Studio 2019\ProjetoC#\Gorjeta\Gorjeta\bin\Debug\Gorjeta.pdb
+C:\Users\rodri\OneDrive\Documentos\Visual Studio 2019\ProjetoC#\Gorjeta\Gorjeta\obj\Debug\Gorjeta.csproj.AssemblyReference.cache
+C:\Users\rodri\OneDrive\Documentos\Visual Studio 2019\ProjetoC#\Gorjeta\Gorjeta\obj\Debug\Gorjeta.Properties.Resources.resources
+C:\Users\rodri\OneDrive\Documentos\Visual Studio 2019\ProjetoC#\Gorjeta\Gorjeta\obj\Debug\Gorjeta.csproj.GenerateResource.cache
+C:\Users\rodri\OneDrive\Documentos\Visual Studio 2019\ProjetoC#\Gorjeta\Gorjeta\obj\Debug\Gorjeta.csproj.CoreCompileInputs.cache
+C:\Users\rodri\OneDrive\Documentos\Visual Studio 2019\ProjetoC#\Gorjeta\Gorjeta\obj\Debug\Gorjeta.exe
+C:\Users\rodri\OneDrive\Documentos\Visual Studio 2019\ProjetoC#\Gorjeta\Gorjeta\obj\Debug\Gorjeta.pdb
