@@ -35,15 +35,15 @@ namespace Apple
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.lblSenha = new System.Windows.Forms.Label();
+            this.btnVoltar = new System.Windows.Forms.Button();
             this.btnEntrar = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picApple)).BeginInit();
             this.SuspendLayout();
             // 
             // picApple
             // 
-            this.picApple.Image = global::Apple.Properties.Resources.LogoApple;
-            this.picApple.Location = new System.Drawing.Point(444, 99);
+            this.picApple.Image = ((System.Drawing.Image)(resources.GetObject("picApple.Image")));
+            this.picApple.Location = new System.Drawing.Point(474, 119);
             this.picApple.Name = "picApple";
             this.picApple.Size = new System.Drawing.Size(200, 224);
             this.picApple.TabIndex = 0;
@@ -90,33 +90,37 @@ namespace Apple
             this.lblSenha.TabIndex = 3;
             this.lblSenha.Text = "Senha";
             // 
+            // btnVoltar
+            // 
+            this.btnVoltar.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.btnVoltar.Image = global::Apple.Properties.Resources.back_24x;
+            this.btnVoltar.Location = new System.Drawing.Point(148, 322);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(155, 41);
+            this.btnVoltar.TabIndex = 17;
+            this.btnVoltar.Text = "&Voltar";
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVoltar.UseVisualStyleBackColor = false;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
             // btnEntrar
             // 
-            this.btnEntrar.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.btnEntrar.BackColor = System.Drawing.SystemColors.HighlightText;
             this.btnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEntrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.btnEntrar.Location = new System.Drawing.Point(148, 277);
+            this.btnEntrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
+            this.btnEntrar.Image = global::Apple.Properties.Resources.teamwork_24x;
+            this.btnEntrar.Location = new System.Drawing.Point(148, 270);
             this.btnEntrar.Name = "btnEntrar";
-            this.btnEntrar.Size = new System.Drawing.Size(155, 39);
-            this.btnEntrar.TabIndex = 5;
+            this.btnEntrar.Size = new System.Drawing.Size(155, 41);
+            this.btnEntrar.TabIndex = 18;
             this.btnEntrar.Text = "&Entrar";
+            this.btnEntrar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEntrar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEntrar.UseVisualStyleBackColor = false;
             this.btnEntrar.Click += new System.EventHandler(this.btnEntrar_Click);
-            // 
-            // btnSair
-            // 
-            this.btnSair.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.25F);
-            this.btnSair.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnSair.Location = new System.Drawing.Point(698, 404);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(81, 34);
-            this.btnSair.TabIndex = 6;
-            this.btnSair.Text = "&SAIR";
-            this.btnSair.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSair.UseVisualStyleBackColor = false;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // frmLogin
             // 
@@ -124,8 +128,8 @@ namespace Apple
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.InfoText;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.btnEntrar);
+            this.Controls.Add(this.btnVoltar);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.lblSenha);
             this.Controls.Add(this.txtNome);
@@ -149,7 +153,7 @@ namespace Apple
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Label lblSenha;
+        private System.Windows.Forms.Button btnVoltar;
         private System.Windows.Forms.Button btnEntrar;
-        private System.Windows.Forms.Button btnSair;
     }
 }
