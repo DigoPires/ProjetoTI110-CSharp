@@ -31,9 +31,6 @@ namespace Apple
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEstoque));
             this.pnlCRUD = new System.Windows.Forms.Panel();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.btnLimpar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
@@ -46,13 +43,17 @@ namespace Apple
             this.lblQuantidade = new System.Windows.Forms.Label();
             this.lblDataEntrada = new System.Windows.Forms.Label();
             this.gpbPesquisa = new System.Windows.Forms.GroupBox();
-            this.btnVerTudo = new System.Windows.Forms.Button();
             this.ltbPesquisa = new System.Windows.Forms.ListBox();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
             this.rdbDescricao = new System.Windows.Forms.RadioButton();
-            this.btnPesquisar = new System.Windows.Forms.Button();
             this.rdbCodigo = new System.Windows.Forms.RadioButton();
             this.lblPesquisa = new System.Windows.Forms.Label();
+            this.btnVerTudo = new System.Windows.Forms.Button();
+            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.btnVerVendas = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
@@ -74,48 +75,6 @@ namespace Apple
             this.pnlCRUD.Name = "pnlCRUD";
             this.pnlCRUD.Size = new System.Drawing.Size(784, 59);
             this.pnlCRUD.TabIndex = 13;
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.Image = global::Apple.Properties.Resources.back_24x;
-            this.btnVoltar.Location = new System.Drawing.Point(618, 9);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(105, 41);
-            this.btnVoltar.TabIndex = 16;
-            this.btnVoltar.Text = "&Voltar";
-            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnVoltar.UseVisualStyleBackColor = true;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpar.Image = global::Apple.Properties.Resources.clean_24x;
-            this.btnLimpar.Location = new System.Drawing.Point(507, 9);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(105, 41);
-            this.btnLimpar.TabIndex = 15;
-            this.btnLimpar.Text = "&Limpar";
-            this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir.Image = global::Apple.Properties.Resources.trash_24x;
-            this.btnExcluir.Location = new System.Drawing.Point(396, 9);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(105, 41);
-            this.btnExcluir.TabIndex = 14;
-            this.btnExcluir.Text = "&Excluir";
-            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // lblCodigo
             // 
@@ -155,6 +114,7 @@ namespace Apple
             // 
             // gpbDados
             // 
+            this.gpbDados.Controls.Add(this.btnVerVendas);
             this.gpbDados.Controls.Add(this.txtValorUnit);
             this.gpbDados.Controls.Add(this.lblValorUnit);
             this.gpbDados.Controls.Add(this.dtpDataEntrada);
@@ -243,20 +203,6 @@ namespace Apple
             this.gpbPesquisa.TabStop = false;
             this.gpbPesquisa.Text = "Pesquisa";
             // 
-            // btnVerTudo
-            // 
-            this.btnVerTudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerTudo.Image = global::Apple.Properties.Resources.see_24x;
-            this.btnVerTudo.Location = new System.Drawing.Point(190, 325);
-            this.btnVerTudo.Name = "btnVerTudo";
-            this.btnVerTudo.Size = new System.Drawing.Size(105, 41);
-            this.btnVerTudo.TabIndex = 27;
-            this.btnVerTudo.Text = "&Ver Tudo";
-            this.btnVerTudo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVerTudo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnVerTudo.UseVisualStyleBackColor = true;
-            this.btnVerTudo.Click += new System.EventHandler(this.btnVerTudo_Click);
-            // 
             // ltbPesquisa
             // 
             this.ltbPesquisa.FormattingEnabled = true;
@@ -288,20 +234,6 @@ namespace Apple
             this.rdbDescricao.UseVisualStyleBackColor = true;
             this.rdbDescricao.CheckedChanged += new System.EventHandler(this.rdbDescricao_CheckedChanged);
             // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPesquisar.Image = global::Apple.Properties.Resources.search_24x;
-            this.btnPesquisar.Location = new System.Drawing.Point(73, 325);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(105, 41);
-            this.btnPesquisar.TabIndex = 10;
-            this.btnPesquisar.Text = "&Pesquisar";
-            this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
-            // 
             // rdbCodigo
             // 
             this.rdbCodigo.AutoSize = true;
@@ -324,6 +256,90 @@ namespace Apple
             this.lblPesquisa.Size = new System.Drawing.Size(66, 17);
             this.lblPesquisa.TabIndex = 14;
             this.lblPesquisa.Text = "Pesquisa";
+            // 
+            // btnVerTudo
+            // 
+            this.btnVerTudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerTudo.Image = global::Apple.Properties.Resources.see_24x;
+            this.btnVerTudo.Location = new System.Drawing.Point(190, 325);
+            this.btnVerTudo.Name = "btnVerTudo";
+            this.btnVerTudo.Size = new System.Drawing.Size(105, 41);
+            this.btnVerTudo.TabIndex = 27;
+            this.btnVerTudo.Text = "&Ver Tudo";
+            this.btnVerTudo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVerTudo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVerTudo.UseVisualStyleBackColor = true;
+            this.btnVerTudo.Click += new System.EventHandler(this.btnVerTudo_Click);
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPesquisar.Image = global::Apple.Properties.Resources.search_24x;
+            this.btnPesquisar.Location = new System.Drawing.Point(73, 325);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(105, 41);
+            this.btnPesquisar.TabIndex = 10;
+            this.btnPesquisar.Text = "&Pesquisar";
+            this.btnPesquisar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPesquisar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            // 
+            // btnVerVendas
+            // 
+            this.btnVerVendas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerVendas.Image = global::Apple.Properties.Resources.sell_24x;
+            this.btnVerVendas.Location = new System.Drawing.Point(215, 68);
+            this.btnVerVendas.Name = "btnVerVendas";
+            this.btnVerVendas.Size = new System.Drawing.Size(105, 41);
+            this.btnVerVendas.TabIndex = 17;
+            this.btnVerVendas.Text = "&Ver Vendas";
+            this.btnVerVendas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVerVendas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVerVendas.UseVisualStyleBackColor = true;
+            this.btnVerVendas.Click += new System.EventHandler(this.btnVerVendas_Click);
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVoltar.Image = global::Apple.Properties.Resources.back_24x;
+            this.btnVoltar.Location = new System.Drawing.Point(618, 9);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(105, 41);
+            this.btnVoltar.TabIndex = 16;
+            this.btnVoltar.Text = "&Voltar";
+            this.btnVoltar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVoltar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpar.Image = global::Apple.Properties.Resources.clean_24x;
+            this.btnLimpar.Location = new System.Drawing.Point(507, 9);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(105, 41);
+            this.btnLimpar.TabIndex = 15;
+            this.btnLimpar.Text = "&Limpar";
+            this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnLimpar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExcluir.Image = global::Apple.Properties.Resources.trash_24x;
+            this.btnExcluir.Location = new System.Drawing.Point(396, 9);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(105, 41);
+            this.btnExcluir.TabIndex = 14;
+            this.btnExcluir.Text = "&Excluir";
+            this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExcluir.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnAlterar
             // 
@@ -417,6 +433,7 @@ namespace Apple
         private System.Windows.Forms.TextBox txtPesquisa;
         private System.Windows.Forms.ListBox ltbPesquisa;
         private System.Windows.Forms.Button btnVerTudo;
+        private System.Windows.Forms.Button btnVerVendas;
     }
 }
 

@@ -249,14 +249,14 @@ namespace Apple
         public int cadastrarProdutos()
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "insert into tb_Produtos(descricao,data_Entrada,quantidade,valorUnit) values(@descricao,@data_Entrada,@quantidade,@valorUnit);";
+            comm.CommandText = "insert into tb_Produtos(descricao,data_Entrada,quantidade,valor_unit) values(@descricao,@data_Entrada,@quantidade,@valor_unit);";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
             comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = txtDescricao.Text;
             comm.Parameters.Add("@data_Entrada", MySqlDbType.Date).Value = Convert.ToDateTime(dtpDataEntrada.Text);
             comm.Parameters.Add("@quantidade", MySqlDbType.Decimal).Value = txtQuantidade.Text;
-            comm.Parameters.Add("@valorUnit", MySqlDbType.Decimal).Value = txtValorUnit.Text;
+            comm.Parameters.Add("@valor_unit", MySqlDbType.Decimal).Value = txtValorUnit.Text;
 
             comm.Connection = Conexao.obterConexao();
 
@@ -270,15 +270,15 @@ namespace Apple
         public int alterarProduto(int codigo)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "update tb_Produtos set descricao like @descricao, data_Entrada = @data_Entrada, quantidade = @quantidade, valorUnit = @valorUnit where cod_prod = @cod_prod;";
+            comm.CommandText = "update tb_Produtos set descricao = @descricao, data_Entrada = @data_Entrada, quantidade = @quantidade, valor_unit = @valor_unit where cod_prod = @cod_prod;";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
             comm.Parameters.Add("@cod_prod", MySqlDbType.Int32).Value = codigo;
-            comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = '%' + txtDescricao.Text + '%';
+            comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = txtDescricao.Text;
             comm.Parameters.Add("@data_Entrada", MySqlDbType.Date).Value = Convert.ToDateTime(dtpDataEntrada.Text);
             comm.Parameters.Add("@quantidade", MySqlDbType.Decimal).Value = txtQuantidade.Text;
-            comm.Parameters.Add("@valorUnit", MySqlDbType.Decimal).Value = txtValorUnit.Text;
+            comm.Parameters.Add("@valor_unit", MySqlDbType.Decimal).Value = txtValorUnit.Text;
 
             comm.Connection = Conexao.obterConexao();
 
@@ -460,6 +460,13 @@ namespace Apple
         private void txtPesquisa_TextChanged(object sender, EventArgs e)
         {
             btnLimpar.Enabled = true;
+        }
+
+        private void btnVerVendas_Click(object sender, EventArgs e)
+        {
+            frmVendas abrir = new frmVendas();
+            abrir.Show();
+            this.Hide();
         }
     }
 }

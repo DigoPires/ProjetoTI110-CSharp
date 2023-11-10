@@ -95,6 +95,8 @@ namespace Apple
             this.Controls.Add(this.pctComprar);
             this.Controls.Add(this.lblEstoque);
             this.Controls.Add(this.pctEstoque);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmMenu";

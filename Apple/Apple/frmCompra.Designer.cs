@@ -29,9 +29,13 @@ namespace Apple
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCompra));
             this.lblSaldo = new System.Windows.Forms.Label();
             this.txtSaldo = new System.Windows.Forms.TextBox();
             this.gpbCompra = new System.Windows.Forms.GroupBox();
+            this.dtpCompra = new System.Windows.Forms.DateTimePicker();
+            this.lblQuantidadeEstq = new System.Windows.Forms.Label();
+            this.txtQuantidadeEstq = new System.Windows.Forms.TextBox();
             this.cbbQuantidade = new System.Windows.Forms.ComboBox();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.txtValorTotal = new System.Windows.Forms.TextBox();
@@ -53,8 +57,8 @@ namespace Apple
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.lblPesquisa = new System.Windows.Forms.Label();
             this.btnVoltar = new System.Windows.Forms.Button();
-            this.txtQuantidadeEstq = new System.Windows.Forms.TextBox();
-            this.lblQuantidadeEstq = new System.Windows.Forms.Label();
+            this.txtNomeCli = new System.Windows.Forms.TextBox();
+            this.lblNomeCli = new System.Windows.Forms.Label();
             this.gpbCompra.SuspendLayout();
             this.gpbPesquisa.SuspendLayout();
             this.SuspendLayout();
@@ -81,6 +85,9 @@ namespace Apple
             // 
             // gpbCompra
             // 
+            this.gpbCompra.Controls.Add(this.txtNomeCli);
+            this.gpbCompra.Controls.Add(this.lblNomeCli);
+            this.gpbCompra.Controls.Add(this.dtpCompra);
             this.gpbCompra.Controls.Add(this.lblQuantidadeEstq);
             this.gpbCompra.Controls.Add(this.txtQuantidadeEstq);
             this.gpbCompra.Controls.Add(this.cbbQuantidade);
@@ -105,8 +112,37 @@ namespace Apple
             this.gpbCompra.TabStop = false;
             this.gpbCompra.Text = "Compra";
             // 
+            // dtpCompra
+            // 
+            this.dtpCompra.Enabled = false;
+            this.dtpCompra.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpCompra.Location = new System.Drawing.Point(260, 19);
+            this.dtpCompra.Name = "dtpCompra";
+            this.dtpCompra.Size = new System.Drawing.Size(79, 20);
+            this.dtpCompra.TabIndex = 39;
+            // 
+            // lblQuantidadeEstq
+            // 
+            this.lblQuantidadeEstq.AutoSize = true;
+            this.lblQuantidadeEstq.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.lblQuantidadeEstq.Location = new System.Drawing.Point(181, 141);
+            this.lblQuantidadeEstq.Name = "lblQuantidadeEstq";
+            this.lblQuantidadeEstq.Size = new System.Drawing.Size(158, 17);
+            this.lblQuantidadeEstq.TabIndex = 38;
+            this.lblQuantidadeEstq.Text = "Quantidade no Estoque";
+            // 
+            // txtQuantidadeEstq
+            // 
+            this.txtQuantidadeEstq.Enabled = false;
+            this.txtQuantidadeEstq.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtQuantidadeEstq.Location = new System.Drawing.Point(184, 161);
+            this.txtQuantidadeEstq.Name = "txtQuantidadeEstq";
+            this.txtQuantidadeEstq.Size = new System.Drawing.Size(155, 23);
+            this.txtQuantidadeEstq.TabIndex = 37;
+            // 
             // cbbQuantidade
             // 
+            this.cbbQuantidade.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbQuantidade.FormattingEnabled = true;
             this.cbbQuantidade.Items.AddRange(new object[] {
             "1",
@@ -119,7 +155,7 @@ namespace Apple
             "8",
             "9",
             "10"});
-            this.cbbQuantidade.Location = new System.Drawing.Point(32, 254);
+            this.cbbQuantidade.Location = new System.Drawing.Point(32, 277);
             this.cbbQuantidade.Name = "cbbQuantidade";
             this.cbbQuantidade.Size = new System.Drawing.Size(140, 21);
             this.cbbQuantidade.TabIndex = 36;
@@ -143,7 +179,7 @@ namespace Apple
             // 
             this.txtValorTotal.Enabled = false;
             this.txtValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.txtValorTotal.Location = new System.Drawing.Point(184, 251);
+            this.txtValorTotal.Location = new System.Drawing.Point(184, 274);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.Size = new System.Drawing.Size(155, 23);
             this.txtValorTotal.TabIndex = 34;
@@ -166,7 +202,7 @@ namespace Apple
             // 
             this.lblValorTotal.AutoSize = true;
             this.lblValorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblValorTotal.Location = new System.Drawing.Point(189, 232);
+            this.lblValorTotal.Location = new System.Drawing.Point(189, 255);
             this.lblValorTotal.Name = "lblValorTotal";
             this.lblValorTotal.Size = new System.Drawing.Size(77, 17);
             this.lblValorTotal.TabIndex = 35;
@@ -176,7 +212,7 @@ namespace Apple
             // 
             this.txtValorGorjeta.Enabled = false;
             this.txtValorGorjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.txtValorGorjeta.Location = new System.Drawing.Point(184, 193);
+            this.txtValorGorjeta.Location = new System.Drawing.Point(184, 216);
             this.txtValorGorjeta.Name = "txtValorGorjeta";
             this.txtValorGorjeta.Size = new System.Drawing.Size(155, 23);
             this.txtValorGorjeta.TabIndex = 32;
@@ -185,7 +221,7 @@ namespace Apple
             // 
             this.lblValorGorjeta.AutoSize = true;
             this.lblValorGorjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblValorGorjeta.Location = new System.Drawing.Point(183, 173);
+            this.lblValorGorjeta.Location = new System.Drawing.Point(183, 196);
             this.lblValorGorjeta.Name = "lblValorGorjeta";
             this.lblValorGorjeta.Size = new System.Drawing.Size(112, 17);
             this.lblValorGorjeta.TabIndex = 33;
@@ -193,13 +229,14 @@ namespace Apple
             // 
             // cbbGorjeta
             // 
+            this.cbbGorjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbGorjeta.FormattingEnabled = true;
             this.cbbGorjeta.Items.AddRange(new object[] {
             "Excelente - 5%",
             "Bom - 3%",
             "Ruim - 2%",
             "Sem Gorjeta"});
-            this.cbbGorjeta.Location = new System.Drawing.Point(32, 195);
+            this.cbbGorjeta.Location = new System.Drawing.Point(32, 218);
             this.cbbGorjeta.Name = "cbbGorjeta";
             this.cbbGorjeta.Size = new System.Drawing.Size(140, 21);
             this.cbbGorjeta.TabIndex = 31;
@@ -209,7 +246,7 @@ namespace Apple
             // 
             this.lblGorjeta.AutoSize = true;
             this.lblGorjeta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblGorjeta.Location = new System.Drawing.Point(29, 174);
+            this.lblGorjeta.Location = new System.Drawing.Point(29, 197);
             this.lblGorjeta.Name = "lblGorjeta";
             this.lblGorjeta.Size = new System.Drawing.Size(55, 17);
             this.lblGorjeta.TabIndex = 30;
@@ -219,7 +256,7 @@ namespace Apple
             // 
             this.txtValorUnit.Enabled = false;
             this.txtValorUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.txtValorUnit.Location = new System.Drawing.Point(32, 138);
+            this.txtValorUnit.Location = new System.Drawing.Point(32, 161);
             this.txtValorUnit.Name = "txtValorUnit";
             this.txtValorUnit.Size = new System.Drawing.Size(140, 23);
             this.txtValorUnit.TabIndex = 26;
@@ -229,7 +266,7 @@ namespace Apple
             // 
             this.lblValorUnit.AutoSize = true;
             this.lblValorUnit.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblValorUnit.Location = new System.Drawing.Point(29, 118);
+            this.lblValorUnit.Location = new System.Drawing.Point(29, 141);
             this.lblValorUnit.Name = "lblValorUnit";
             this.lblValorUnit.Size = new System.Drawing.Size(94, 17);
             this.lblValorUnit.TabIndex = 29;
@@ -239,7 +276,7 @@ namespace Apple
             // 
             this.lblQuantidade.AutoSize = true;
             this.lblQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblQuantidade.Location = new System.Drawing.Point(26, 234);
+            this.lblQuantidade.Location = new System.Drawing.Point(26, 257);
             this.lblQuantidade.Name = "lblQuantidade";
             this.lblQuantidade.Size = new System.Drawing.Size(82, 17);
             this.lblQuantidade.TabIndex = 28;
@@ -249,7 +286,7 @@ namespace Apple
             // 
             this.txtDescricao.Enabled = false;
             this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.txtDescricao.Location = new System.Drawing.Point(32, 77);
+            this.txtDescricao.Location = new System.Drawing.Point(32, 100);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(307, 23);
             this.txtDescricao.TabIndex = 24;
@@ -258,7 +295,7 @@ namespace Apple
             // 
             this.lblDescricao.AutoSize = true;
             this.lblDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblDescricao.Location = new System.Drawing.Point(29, 57);
+            this.lblDescricao.Location = new System.Drawing.Point(29, 80);
             this.lblDescricao.Name = "lblDescricao";
             this.lblDescricao.Size = new System.Drawing.Size(71, 17);
             this.lblDescricao.TabIndex = 27;
@@ -329,9 +366,9 @@ namespace Apple
             this.lblPesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.lblPesquisa.Location = new System.Drawing.Point(103, 57);
             this.lblPesquisa.Name = "lblPesquisa";
-            this.lblPesquisa.Size = new System.Drawing.Size(156, 17);
+            this.lblPesquisa.Size = new System.Drawing.Size(151, 17);
             this.lblPesquisa.TabIndex = 14;
-            this.lblPesquisa.Text = "Pesquise pelo Prodruto";
+            this.lblPesquisa.Text = "Pesquise pelo Produto";
             // 
             // btnVoltar
             // 
@@ -347,24 +384,23 @@ namespace Apple
             this.btnVoltar.UseVisualStyleBackColor = true;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
-            // txtQuantidadeEstq
+            // txtNomeCli
             // 
-            this.txtQuantidadeEstq.Enabled = false;
-            this.txtQuantidadeEstq.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.txtQuantidadeEstq.Location = new System.Drawing.Point(184, 138);
-            this.txtQuantidadeEstq.Name = "txtQuantidadeEstq";
-            this.txtQuantidadeEstq.Size = new System.Drawing.Size(155, 23);
-            this.txtQuantidadeEstq.TabIndex = 37;
+            this.txtNomeCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.txtNomeCli.Location = new System.Drawing.Point(32, 51);
+            this.txtNomeCli.Name = "txtNomeCli";
+            this.txtNomeCli.Size = new System.Drawing.Size(307, 23);
+            this.txtNomeCli.TabIndex = 40;
             // 
-            // lblQuantidadeEstq
+            // lblNomeCli
             // 
-            this.lblQuantidadeEstq.AutoSize = true;
-            this.lblQuantidadeEstq.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
-            this.lblQuantidadeEstq.Location = new System.Drawing.Point(181, 118);
-            this.lblQuantidadeEstq.Name = "lblQuantidadeEstq";
-            this.lblQuantidadeEstq.Size = new System.Drawing.Size(158, 17);
-            this.lblQuantidadeEstq.TabIndex = 38;
-            this.lblQuantidadeEstq.Text = "Quantidade no Estoque";
+            this.lblNomeCli.AutoSize = true;
+            this.lblNomeCli.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
+            this.lblNomeCli.Location = new System.Drawing.Point(29, 31);
+            this.lblNomeCli.Name = "lblNomeCli";
+            this.lblNomeCli.Size = new System.Drawing.Size(112, 17);
+            this.lblNomeCli.TabIndex = 41;
+            this.lblNomeCli.Text = "Nome do Cliente";
             // 
             // frmCompra
             // 
@@ -376,6 +412,8 @@ namespace Apple
             this.Controls.Add(this.gpbCompra);
             this.Controls.Add(this.txtSaldo);
             this.Controls.Add(this.lblSaldo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "frmCompra";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmCompra";
@@ -417,5 +455,8 @@ namespace Apple
         private System.Windows.Forms.ComboBox cbbQuantidade;
         private System.Windows.Forms.Label lblQuantidadeEstq;
         private System.Windows.Forms.TextBox txtQuantidadeEstq;
+        private System.Windows.Forms.DateTimePicker dtpCompra;
+        private System.Windows.Forms.TextBox txtNomeCli;
+        private System.Windows.Forms.Label lblNomeCli;
     }
 }

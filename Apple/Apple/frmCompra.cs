@@ -18,6 +18,8 @@ namespace Apple
             InitializeComponent();
         }
 
+        public int codigoProd = 0;
+
         public void pesquisarDesc(string descricao)
         {
             if (txtPesquisa.Text.Equals(""))
@@ -69,6 +71,7 @@ namespace Apple
 
         public void limparCampos()
         {
+            txtNomeCli.Clear();
             txtDescricao.Clear();
             txtQuantidadeEstq.Clear();
             txtValorUnit.Clear();
@@ -84,6 +87,8 @@ namespace Apple
 
         public void desabilitarCompra()
         {
+            txtNomeCli.Enabled = false;
+
             cbbGorjeta.Enabled = false;
             cbbQuantidade.Enabled = false;
 
@@ -93,6 +98,8 @@ namespace Apple
 
         public void habilitarCompra()
         {
+            txtNomeCli.Enabled = true;
+
             cbbGorjeta.Enabled = true;
             cbbQuantidade.Enabled = true;
 
@@ -123,6 +130,29 @@ namespace Apple
 
             MessageBox.Show("Saldo insuficiente para encerrar a compra!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             return false;
+        }
+
+        public void registrarVenda()
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "insert into tb_Vendas(cod_prod,nome_cli,descricao,data_venda,gorjeta,valor_gorjeta,quantidade,valor_total) values(@cod_prod,@nome_cli,@descricao,@data_venda,@gorjeta,@valor_gorjeta,@quantidade,@valor_total);";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+            comm.Parameters.Add("@cod_prod", MySqlDbType.Int32).Value = codigoProd;
+            comm.Parameters.Add("@nome_cli", MySqlDbType.VarChar, 100).Value = txtNomeCli.Text;
+            comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = txtDescricao.Text;
+            comm.Parameters.Add("@data_venda", MySqlDbType.Date).Value = Convert.ToDateTime(dtpCompra.Text);
+            comm.Parameters.Add("@gorjeta", MySqlDbType.VarChar, 50).Value = cbbGorjeta.Text;
+            comm.Parameters.Add("@valor_gorjeta", MySqlDbType.Decimal).Value = Convert.ToDouble(txtValorGorjeta.Text);
+            comm.Parameters.Add("@quantidade", MySqlDbType.Decimal).Value = cbbQuantidade.Text;
+            comm.Parameters.Add("@valor_total", MySqlDbType.Decimal).Value = txtValorTotal.Text;
+
+            comm.Connection = Conexao.obterConexao();
+
+            comm.ExecuteNonQuery();
+
+            Conexao.fecharConexao();
         }
 
         public void calcularNovoSaldo()
@@ -196,6 +226,8 @@ namespace Apple
 
             DR = comm.ExecuteReader();
             DR.Read();
+
+            codigoProd = Convert.ToInt32(DR.GetString(0));
 
             txtDescricao.Text = DR.GetString(1).ToString();
             txtQuantidadeEstq.Text = DR.GetString(3).ToString();
@@ -351,17 +383,25 @@ namespace Apple
 
         private void btnComprar_Click(object sender, EventArgs e)
         {
-            if (verificarCompra())
+            if (txtNomeCli.Text != "")
             {
-                DialogResult res = MessageBox.Show("Deseja encerrar a compra no valor de: " + string.Format("{0:c}", Convert.ToDouble(txtValorTotal.Text)), "Mensagem do sistema", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3);
-                if (res == DialogResult.Yes)
+                if (verificarCompra())
                 {
-                    MessageBox.Show("Compra bem-sucedida! Obrigado pela preferência.", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    desabilitarCompra();
-                    calcularNovoSaldo();
-                    alterarQuantidade(Convert.ToDouble(cbbQuantidade.Text), Convert.ToDouble(txtQuantidadeEstq.Text));
-                    limparCampos();
+                    DialogResult res = MessageBox.Show("Deseja encerrar a compra no valor de: " + string.Format("{0:c}", Convert.ToDouble(txtValorTotal.Text)), "Mensagem do sistema", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3);
+                    if (res == DialogResult.Yes)
+                    {
+                        MessageBox.Show("Compra bem-sucedida! Obrigado pela preferência.", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                        desabilitarCompra();
+                        calcularNovoSaldo();
+                        alterarQuantidade(Convert.ToDouble(cbbQuantidade.Text), Convert.ToDouble(txtQuantidadeEstq.Text));
+                        registrarVenda();
+                        limparCampos();
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, insira seu nome!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
 
