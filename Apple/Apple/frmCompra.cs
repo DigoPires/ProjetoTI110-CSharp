@@ -67,6 +67,94 @@ namespace Apple
             }
         }
 
+        public void limparCampos()
+        {
+            txtDescricao.Clear();
+            txtQuantidadeEstq.Clear();
+            txtValorUnit.Clear();
+            txtValorGorjeta.Clear();
+            txtValorTotal.Clear();
+
+            cbbGorjeta.Text = "";
+            cbbQuantidade.Text = "";
+
+            txtPesquisa.Clear();
+            ltbPesquisa.Items.Clear();
+        }
+
+        public void desabilitarCompra()
+        {
+            cbbGorjeta.Enabled = false;
+            cbbQuantidade.Enabled = false;
+
+            btnComprar.Enabled = false;
+            btnCancelar.Enabled = false;
+        }
+
+        public void habilitarCompra()
+        {
+            cbbGorjeta.Enabled = true;
+            cbbQuantidade.Enabled = true;
+
+            btnComprar.Enabled = true;
+            btnCancelar.Enabled = true;
+        }
+
+        public bool verificarCompra()
+        {
+            double saldo, total;
+
+            saldo = Convert.ToDouble(txtSaldo.Text);
+            total = Convert.ToDouble(txtValorTotal.Text);
+            if (saldo > total)
+            {
+                double quant, quantEstoq;
+                quantEstoq = Convert.ToDouble(txtQuantidadeEstq.Text);
+                quant = Convert.ToDouble(cbbQuantidade.Text);
+
+                if (quantEstoq >= quant)
+                {
+                    return true;
+                }
+
+                MessageBox.Show("Quantidade insuficiente!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+                return false;
+            }
+
+            MessageBox.Show("Saldo insuficiente para encerrar a compra!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            return false;
+        }
+
+        public void calcularNovoSaldo()
+        {
+            double res, saldo, total;
+
+            saldo = Convert.ToDouble(txtSaldo.Text);
+            total = Convert.ToDouble(txtValorTotal.Text);
+
+            res = saldo - total;
+
+            txtSaldo.Text = string.Format("{0:n}", res);
+        }
+
+        public void alterarQuantidade(double quant, double quantEstoq)
+        {
+            MySqlCommand comm = new MySqlCommand();
+            comm.CommandText = "update tb_produtos set quantidade = @quant where descricao like @desc;";
+            comm.CommandType = CommandType.Text;
+
+            comm.Parameters.Clear();
+
+            comm.Parameters.Add("@desc", MySqlDbType.VarChar, 100).Value = '%' + txtDescricao.Text + '%';
+            comm.Parameters.Add("@quant", MySqlDbType.Decimal).Value = (quantEstoq - quant);
+
+            comm.Connection = Conexao.obterConexao();
+
+            comm.ExecuteNonQuery();
+
+            Conexao.fecharConexao();
+        }
+
         public void verTudo()
         {
             MySqlCommand comm = new MySqlCommand();
@@ -82,7 +170,10 @@ namespace Apple
 
             while (DR.Read())
             {
-                ltbPesquisa.Items.Add(DR.GetString(1));
+                if (Convert.ToDouble(DR.GetString(3)) > 0)
+                {
+                    ltbPesquisa.Items.Add(DR.GetString(1));
+                }
             }
 
             Conexao.fecharConexao();
@@ -91,7 +182,7 @@ namespace Apple
         public void carregarItens(string desc)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "select * from tb_Produtos where descricao like @descricao;";
+            comm.CommandText = "select * from tb_Produtos where descricao like @descricao;"; //select quantidade from tb_Produtos where descricao like;
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
@@ -107,6 +198,7 @@ namespace Apple
             DR.Read();
 
             txtDescricao.Text = DR.GetString(1).ToString();
+            txtQuantidadeEstq.Text = DR.GetString(3).ToString();
             txtValorUnit.Text = DR.GetString(4).ToString();
 
             Conexao.fecharConexao();
@@ -176,14 +268,17 @@ namespace Apple
         {
             switch (cbbGorjeta.Text)
             {
-                case "Excelente - 3%":
+                case "Excelente - 5%":
+                    calcularTotal(5);
+                    break;
+                case "Bom - 3%":
                     calcularTotal(3);
                     break;
-                case "Bom - 2%":
+                case "Ruim - 2%":
                     calcularTotal(2);
                     break;
-                case "Ruim - 1%":
-                    calcularTotal(1);
+                case "Sem Gorjeta":
+                    calcularTotal(0);
                     break;
                 default:
                     break;
@@ -192,12 +287,9 @@ namespace Apple
 
         private void frmCompra_Load(object sender, EventArgs e)
         {
-            string.Format("{0:n}", Convert.ToDouble(txtSaldo.Text));
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            txtValorTotal.Text = txtValorGorjeta.Text;
+            txtSaldo.Text = string.Format("{0:n}", Convert.ToDouble(txtSaldo.Text));
+            txtPesquisa.Focus();
+            desabilitarCompra();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -223,7 +315,9 @@ namespace Apple
             {
                 string desc = ltbPesquisa.SelectedItem.ToString();
                 carregarItens(desc);
+                habilitarCompra();
                 cbbQuantidade.Text = "1";
+                cbbGorjeta.Text = "Sem Gorjeta";
             }
             else
             {
@@ -233,12 +327,54 @@ namespace Apple
 
         private void cbbGorjeta_SelectedIndexChanged(object sender, EventArgs e)
         {
-            avaliacaoGorjeta();
+            if (cbbGorjeta.Text != "")
+            {
+                avaliacaoGorjeta();
+            }
         }
 
         private void cbbQuantidade_SelectedIndexChanged(object sender, EventArgs e)
         {
-            avaliacaoGorjeta();
+            if (cbbQuantidade.Text != "")
+            {
+                avaliacaoGorjeta();
+            }
         }
+
+        private void txtValorUnit_TextChanged(object sender, EventArgs e)
+        {
+            if (txtValorUnit.Text != "")
+            {
+                avaliacaoGorjeta();
+            }
+        }
+
+        private void btnComprar_Click(object sender, EventArgs e)
+        {
+            if (verificarCompra())
+            {
+                DialogResult res = MessageBox.Show("Deseja encerrar a compra no valor de: " + string.Format("{0:c}", Convert.ToDouble(txtValorTotal.Text)), "Mensagem do sistema", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3);
+                if (res == DialogResult.Yes)
+                {
+                    MessageBox.Show("Compra bem-sucedida! Obrigado pela preferência.", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    desabilitarCompra();
+                    calcularNovoSaldo();
+                    alterarQuantidade(Convert.ToDouble(cbbQuantidade.Text), Convert.ToDouble(txtQuantidadeEstq.Text));
+                    limparCampos();
+                }
+            }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Deseja cancelar sua compra?", "Mensagem do sistema", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button3);
+            if (res == DialogResult.Yes)
+            {
+                MessageBox.Show("Compra cancelada!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                desabilitarCompra();
+                limparCampos();
+            }
+        }
+
     }
 }

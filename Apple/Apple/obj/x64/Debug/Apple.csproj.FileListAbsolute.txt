@@ -88,3 +88,5 @@ C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\A
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\Apple\Apple\obj\x64\Debug\Apple.pdb
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\Apple\Apple\obj\x64\Debug\Apple.frmEstoque.resources
 C:\Users\rodrigo.pfigueiredo1\Documents\Visual Studio 2019\ProjetoTI110-CSharp\Apple\Apple\obj\x64\Debug\Apple.frmCompra.resources
+C:\Users\rodri\OneDrive\Documentos\Visual Studio 2019\ProjetoC#\Apple\Apple\obj\x64\Debug\Apple.frmCompra.resources
+C:\Users\rodri\OneDrive\Documentos\Visual Studio 2019\ProjetoC#\Apple\Apple\obj\x64\Debug\Apple.frmEstoque.resources

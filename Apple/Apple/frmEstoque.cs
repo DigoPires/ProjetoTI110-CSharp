@@ -270,12 +270,12 @@ namespace Apple
         public int alterarProduto(int codigo)
         {
             MySqlCommand comm = new MySqlCommand();
-            comm.CommandText = "update tb_Produtos set descricao = @descricao, data_Entrada = @data_Entrada, quantidade = @quantidade, valorUnit = @valorUnit where cod_prod = @cod_prod;";
+            comm.CommandText = "update tb_Produtos set descricao like @descricao, data_Entrada = @data_Entrada, quantidade = @quantidade, valorUnit = @valorUnit where cod_prod = @cod_prod;";
             comm.CommandType = CommandType.Text;
 
             comm.Parameters.Clear();
             comm.Parameters.Add("@cod_prod", MySqlDbType.Int32).Value = codigo;
-            comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = txtDescricao.Text;
+            comm.Parameters.Add("@descricao", MySqlDbType.VarChar, 100).Value = '%' + txtDescricao.Text + '%';
             comm.Parameters.Add("@data_Entrada", MySqlDbType.Date).Value = Convert.ToDateTime(dtpDataEntrada.Text);
             comm.Parameters.Add("@quantidade", MySqlDbType.Decimal).Value = txtQuantidade.Text;
             comm.Parameters.Add("@valorUnit", MySqlDbType.Decimal).Value = txtValorUnit.Text;
@@ -366,6 +366,7 @@ namespace Apple
             {
                 if (cadastrarProdutos() == 1)
                 {
+                    txtValorUnit.Text = string.Format("{0:c}", Convert.ToDouble(txtValorUnit.Text));
                     MessageBox.Show("Cadastrado com sucesso!", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
                     limparCampos();
                     desabilitarCamposLoad();
