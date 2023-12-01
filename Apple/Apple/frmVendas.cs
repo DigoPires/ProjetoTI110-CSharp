@@ -83,7 +83,14 @@ namespace Apple
 
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            pesquisarDesc(txtPesquisa.Text);
+            if (txtPesquisa.Text != "")
+            {
+                pesquisarDesc(txtPesquisa.Text);
+            }
+            else
+            {
+                MessageBox.Show("Por Favor, insira algum", "Mensagem do sistema.", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
         }
 
         private void btnVerTudo_Click(object sender, EventArgs e)
